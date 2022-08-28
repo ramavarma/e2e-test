@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ramavarma/e2e-test#readme",
   "devDependencies": {
+    "jest": "^29.0.1",
+    "puppeteer": "^16.2.0",
     "typescript": "^4.8.2"
   }
 }
