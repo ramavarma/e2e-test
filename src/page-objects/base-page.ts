@@ -1,4 +1,4 @@
-import { Browser, ConnectOptions, launch, Page, PuppeteerLaunchOptions } from 'puppeteer';
+import { Browser, ConnectOptions, ElementHandle, launch, Page, PuppeteerLaunchOptions } from 'puppeteer';
 
 export class BasePage {
     protected env: string | undefined = process.env.TEST_TARGET_ENV || ''
@@ -89,5 +89,29 @@ export class BasePage {
             })
         });
     }
+
+    async close(page?: Page) {
+        const tempPage = page ? page : this.page;
+        await tempPage!.close()
+    }
+
+    async getElementByXPath(xpath: string, options?: any, page?: Page) {
+        const tempPage: Page = page ? page : this.page!;
+        await tempPage.waitForXPath(xpath, options)
+        return await tempPage.$x(xpath);
+    }
+
+    async getTextByXPATH(xpath: string,  options?: any, page?: Page) {
+
+        // need to implement
+        return 'Details'
+    }
+
+    async getTextById(xpath: string,  options?: any, page?: Page) {
+
+        // need to implement
+    }
+
+    // implement all the other method
 
 }
